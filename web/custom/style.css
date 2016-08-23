@@ -54,17 +54,13 @@ nav a:focus, nav a:hover, nav a:active {
   background:#332E2E;
   padding:0px;
 }
-
 #panel-tutorial .info {
   padding:10px 60px 20px 60px;
 }
-
 #panel-tutorial .tutorial {
   padding:10px 60px 100px 60px;
 }
-
 #panel-tutorial .info2 {
-  background:#544D4D;
   padding:20px 60px 20px 60px;
 }
 
@@ -78,11 +74,64 @@ nav a:focus, nav a:hover, nav a:active {
   padding:20px 100px 20px 20px;
 }
 
+#panel-full {
+  background:#F0F0F0;
+  left:0vw;
+  top:50px;
+  width:100vw;
+  position:absolute;
+  height:calc(100vh - 50px);  
+  padding:0px;  
+}
+
+/* ---------------------------------------------------------------------------------------- */
+/* Home page formatting                                                                     */
+/* ---------------------------------------------------------------------------------------- */
+
+/* Home page info box */
+.hp-banner {
+  background:#332E2E;
+  padding:20px 0px 40px 0px;
+}
+.hp-banner h1 {
+  font:600 30pt Rajdhani, sans-serif;
+}
+.hp-banner p {
+  font:400 13pt 'Open Sans', sans-serif;
+}
+.hp-content {
+  padding:30px 0px 0px 0px;
+}
+.hp-content .tutorial-wrapper {
+  padding:10px;
+}
+.hp-content .tutorial {
+  background:#544D4D;
+  padding:20px;
+}
+.hp-content a {
+  color:#d0d0d0;
+}
+.hp-content a:hover, .hp-content a:active, .hp-content a:focus {
+  color:white;
+  text-decoration:none;
+}
+.hp-content p, .hp-content li {
+  font:400 12pt 'Open Sans', sans-serif;  
+}
+
 /* ---------------------------------------------------------------------------------------- */
 /* Formatting for tutorial text                                                             */
 /* ---------------------------------------------------------------------------------------- */
 
 /* Tutorial info box */
+article .info {
+  background:#332E2E;
+}
+article .info h1 {
+  font:600 24pt Rajdhani, sans-serif;
+  margin-top:0px;
+}
 article .info h2 {
   font:600 20pt Rajdhani, sans-serif;
   margin-top:0px;
@@ -102,6 +151,9 @@ article .info a:hover, article .info a:active, article .info a:focus {
 }
 
 /* Tutorial progress box */
+article .info2 {
+  background:#544D4D;
+}
 article .info2 ul {
   margin:0px;
   padding:0px;

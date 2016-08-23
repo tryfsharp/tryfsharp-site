@@ -7,11 +7,32 @@
 {% endblock %}
 
 {% block body %}
-<div id="panel-tutorial">
-</div>
-<div id="panel-editor">
-</div>
-<div id="panel-output">
-</div>
+<article>
+<div id="panel-full">
+  <div class="hp-banner"><div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1>Welcome to Try F#</h1>
+        <p>This is work in progress, but very soon you'll be able to learn F# here...</p>
+      </div>
+    </div>
+  </div></div>
 
+  <div class="hp-content"><div class="container">
+    <div class="row">
+      {% for t in model.Tutorials %}
+      <div class="col-sm-6 tutorial-wrapper"><div class="tutorial">
+        <h2><a href="/tutorial{{ t.Url}}">{{ t.Title }}</a></h2>
+        <p>{{ t.Description }}</p>
+        <ul>
+          {% for sec in t.Sections %}
+            <li>{{ sec.Title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div></div>
+      {% endfor %}
+    </div>
+  </div></div>
+</div>
+</article>
 {% endblock %}
