@@ -151,7 +151,7 @@ Target "run" (fun () ->
 Target "publish" (fun () ->
   let tempOutDir = fullPath ".temp"
   CleanDir tempOutDir
-  Git.Repository.cloneSingleBranch "" "https://github.com/tryfsharp/tryfsharp.github.io.git" "master" tempOutDir
+  Git.Repository.cloneSingleBranch "" "https://github.com/tryfsharp/tryfsharp-site.git" "gh-pages" tempOutDir
 
   for dir in Directory.GetDirectories(tempOutDir) do
     if not (dir.EndsWith(".git")) then CleanDir dir; Directory.Delete dir
