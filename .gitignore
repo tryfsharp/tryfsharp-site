@@ -1,0 +1,9 @@
+.cache
+.output
+.temp
+paket.exe
+packages
+.fake
+.vs
+tools/bin
+tools/obj

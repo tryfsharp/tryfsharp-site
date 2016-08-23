@@ -1,0 +1,86 @@
+{% extends "page.html" %}
+{% block head %}
+  <title>Try F#</title>
+  <link rel="canonical" href="http://tryfsharp.org/tutorial{{ model.Url }}" />
+
+  <!-- ******* TODO ******* -->
+  <!-- Add <meta> tags, og:tags for Facebook and twitter:card tags for Twitter -->
+  <!-- Possibly, also add some microdata for better Google SEO things -->
+{% endblock %}
+
+{% block body %}
+<div id="panel-tutorial">
+  <article>
+    <div class="info">
+      <h1>{{ model.Title }}</h1>
+      <p>{{ model.Description }}</p>
+    </div>
+
+    <div class="info info2">
+      <ul>
+        {% for sec in model.Sections %}
+          <li id="ref_section_{{ sec.Index }}" class="{% if sec.Index == model.CurrentSection %}selected{% endif %}">
+            <a href="/tutorial{{ model.Url }}{{ sec.Index }}/" onclick="return switchSection({{ sec.Index }});">
+              {% if sec.Index == model.CurrentSection %}
+                <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+              {% else %}
+                <i class="fa fa-circle" aria-hidden="true"></i>
+              {% endif %}
+              {{ sec.Title }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    
+    <div class="tutorial">
+      {% for sec in model.Sections %}
+      <div id="section_{{ sec.Index }}" class="section {% if sec.Index == model.CurrentSection %}selected{% endif %}">
+        <h2>{{ sec.Title }}</h2>
+        {{ sec.Content }}
+      </div>
+      {% endfor %}
+    </div>
+    
+  </article>
+</div>
+
+<div id="panel-editor">
+  <div style="position:relative;top:0px;">
+    <div id="editor"></div>
+  </div>
+</div>
+
+<script src="/lib/babel.js"></script>
+<script src="/lib/axios.min.js"></script> 
+<script src="/lib/require.js"></script>
+<script src="/custom/tutorial.js"></script>
+<script type="text/javascript">
+  loadSections([
+    {% for sec in model.Sections %}
+      { demo: "{{ sec.Demo | javaScriptEncode }}", 
+        solution: "{{ sec.Solution | javaScriptEncode }}", 
+        test: "{{ sec.Test | javaScriptEncode }}" },
+    {% endfor %}
+  ]);
+</script>
+<script>
+  require.config({ paths: { 'vs': '/lib/vs' }});
+  require(['vs/editor/editor.main'], function() {
+    require.config({ baseUrl: '/lib', map: { "*": { "monaco": "vs/editor/editor.main", "fable-core": "/lib/fable-core.js" } }});
+  	require(["ext/editor"], function(monaco) {
+      var ed = monaco.createEditor("editor", function(opts) {
+          opts.lineNumbers = false;
+          opts.fontSize = 16;
+          opts.fontFamily = "Droid Sans Mono";
+          opts.wordBasedSuggestions = false;
+          opts.value = "";
+      });
+      ed.getEditor().focus();
+      window.onresize = function() { ed.getEditor().layout(); };      
+      registerEditor(ed);
+      switchSection({{ model.CurrentSection }});
+    });
+  });
+</script>
+{% endblock %}
