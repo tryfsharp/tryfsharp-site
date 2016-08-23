@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <meta name=viewport content="width=device-width, initial-scale=1">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">  
+    
+  <link href="/custom/style.css" rel="stylesheet">
+  <link href="/custom/tooltips.css" rel="stylesheet">  
+  
+  <title>Try F#</title>
+  <link rel="canonical" href="http://tryfsharp.org/tutorial/getting-started/" />
+
+  <!-- ******* TODO ******* -->
+  <!-- Add <meta> tags, og:tags for Facebook and twitter:card tags for Twitter -->
+  <!-- Possibly, also add some microdata for better Google SEO things -->
+  
+</head>
+<body>  
+  <nav>
+    <ul class="nav-left">
+      <li><a href="/">Try F#</a></li>
+      <li><a href="/">Tutorials</a></li>
+      <li><a href="#">Playground</a></li>
+    </ul>
+    <ul class="nav-right">
+      <li><a href="#">fsharp.org</a></li>
+    </ul>
+  </nav>
+  
+  
+<div id="panel-tutorial">
+  <article>
+    <div class="info">
+      <h1>Getting started with F#</h1>
+      <p> Congratulations! You've decided to take your first step towards learning F#, a 
+powerful language that enables you to write simple, concise code to solve complicated
+problems. In this course, you'll learn the basics that you need to feel comfortable
+reading and writing F# programs.</p>
+    </div>
+
+    <div class="info info2">
+      <ul>
+        
+          <li id="ref_section_0" class="">
+            <a href="/tutorial/getting-started/0/" onclick="return switchSection(0);">
+              
+                <i class="fa fa-circle" aria-hidden="true"></i>
+              
+              Running code
+            </a>
+          </li>
+        
+          <li id="ref_section_1" class="">
+            <a href="/tutorial/getting-started/1/" onclick="return switchSection(1);">
+              
+                <i class="fa fa-circle" aria-hidden="true"></i>
+              
+              Adding numbers
+            </a>
+          </li>
+        
+          <li id="ref_section_2" class="">
+            <a href="/tutorial/getting-started/2/" onclick="return switchSection(2);">
+              
+                <i class="fa fa-circle" aria-hidden="true"></i>
+              
+              Mutation
+            </a>
+          </li>
+        
+          <li id="ref_section_3" class="selected">
+            <a href="/tutorial/getting-started/3/" onclick="return switchSection(3);">
+              
+                <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+              
+              That's it
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+    
+    <div class="tutorial">
+      
+      <div id="section_0" class="section ">
+        <h2>Running code</h2>
+        <p>With Try F#, writing your first line of F# code is much easier than it is with many other languages.
+To get started, try typing the following code into the Script Window and pressing the run button or,
+ctrl+enter. If you don't feel like typing, you can also press the load and run button to execute the code.</p>
+
+      </div>
+      
+      <div id="section_1" class="section ">
+        <h2>Adding numbers</h2>
+        <p>Now try adding some numbers</p>
+
+      </div>
+      
+      <div id="section_2" class="section ">
+        <h2>Mutation</h2>
+        <p>Type <code>let mutable evil = "foo"</code> and mutate the value using <code>evil &lt;- 42</code>.</p>
+
+      </div>
+      
+      <div id="section_3" class="section selected">
+        <h2>That's it</h2>
+        <p>Fin d tutorial</p>
+
+      </div>
+      
+    </div>
+    
+  </article>
+</div>
+
+<div id="panel-editor">
+  <div style="position:relative;top:0px;">
+    <div id="editor"></div>
+  </div>
+</div>
+
+<script src="/lib/babel.js"></script>
+<script src="/lib/axios.min.js"></script> 
+<script src="/lib/require.js"></script>
+<script src="/custom/tutorial.js"></script>
+<script type="text/javascript">
+  loadSections([
+    
+      { demo: "// Welcome!\r\n", 
+        solution: "let lucky = 3\r\n", 
+        test: "lucky = 3\r\n" },
+    
+      { demo: "", 
+        solution: "let unlucky = lucky + 6\r\n", 
+        test: "unlucky = 9\r\n" },
+    
+      { demo: "", 
+        solution: "let mutable evil = 1\r\nevil \u003c- 32\r\n", 
+        test: "( evil \u003c- evil; evil = 42 )\r\n" },
+    
+      { demo: "", 
+        solution: "", 
+        test: "" },
+    
+  ]);
+</script>
+<script>
+  require.config({ paths: { 'vs': '/lib/vs' }});
+  require(['vs/editor/editor.main'], function() {
+    require.config({ baseUrl: '/lib', map: { "*": { "monaco": "vs/editor/editor.main", "fable-core": "/lib/fable-core.js" } }});
+  	require(["ext/editor"], function(monaco) {
+      var ed = monaco.createEditor("editor", function(opts) {
+          opts.lineNumbers = false;
+          opts.fontSize = 16;
+          opts.fontFamily = "Droid Sans Mono";
+          opts.wordBasedSuggestions = false;
+          opts.value = "";
+      });
+      ed.getEditor().focus();
+      window.onresize = function() { ed.getEditor().layout(); };      
+      registerEditor(ed);
+      switchSection(3);
+    });
+  });
+</script>
+
+  
+  <!-- Third-party standard references -->
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+    integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="/custom/tooltips.js"></script>
+</body>
+</html>

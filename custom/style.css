@@ -1,0 +1,284 @@
+@import 'https://fonts.googleapis.com/css?family=Open+Sans|Rajdhani:400,500,600,700';
+
+/* ---------------------------------------------------------------------------------------- */
+/* Navigation bar                                                                           */
+/* ---------------------------------------------------------------------------------------- */
+
+nav ul, nav li { 
+  list-style-type:none;
+  margin:0px;
+  padding:0px;
+  display:inline;
+}
+nav .nav-right a {
+  float:right;
+}
+nav .nav-left a {
+  float:left;
+}
+nav {
+  background:#CC4F37;
+  position:absolute;
+  top:0px;
+  width:100%;
+  height:50px;
+  padding:0px 60px 0px 60px;
+}
+nav a {
+  font:500 18pt Rajdhani;
+  color:#ffffff;
+  text-transform:uppercase;
+  margin:10px 30px 0px 30px;
+}
+nav .nav-right a {
+  margin-right:0px;
+}
+nav .nav-left a {
+  margin-left:0px;
+}
+nav a:focus, nav a:hover, nav a:active {
+  color:#F7B8AD;
+  text-decoration:none;
+}
+
+/* ---------------------------------------------------------------------------------------- */
+/* Splitting the window into different panels                                               */
+/* ---------------------------------------------------------------------------------------- */
+
+#panel-tutorial {
+  position:absolute;
+  left:0px;
+  top:50px;
+  width:40vw;
+  height:calc(100vh - 50px);
+  background:#332E2E;
+  padding:0px;
+}
+#panel-tutorial .info {
+  padding:10px 60px 20px 60px;
+}
+#panel-tutorial .tutorial {
+  padding:10px 60px 100px 60px;
+}
+#panel-tutorial .info2 {
+  padding:20px 60px 20px 60px;
+}
+
+#panel-editor {
+  background:#F0F0F0;
+  position:absolute;
+  left:40vw;
+  top:50px;
+  width:60vw;
+  height:calc(100vh - 50px);  
+  padding:20px 100px 20px 20px;
+}
+
+#panel-full {
+  background:#F0F0F0;
+  left:0vw;
+  top:50px;
+  width:100vw;
+  position:absolute;
+  height:calc(100vh - 50px);  
+  padding:0px;  
+}
+
+/* ---------------------------------------------------------------------------------------- */
+/* Home page formatting                                                                     */
+/* ---------------------------------------------------------------------------------------- */
+
+/* Home page info box */
+.hp-banner {
+  background:#332E2E;
+  padding:20px 0px 40px 0px;
+}
+.hp-banner h1 {
+  font:600 30pt Rajdhani, sans-serif;
+}
+.hp-banner p {
+  font:400 13pt 'Open Sans', sans-serif;
+}
+.hp-content {
+  padding:30px 0px 0px 0px;
+}
+.hp-content .tutorial-wrapper {
+  padding:10px;
+}
+.hp-content .tutorial {
+  background:#544D4D;
+  padding:20px;
+}
+.hp-content a {
+  color:#d0d0d0;
+}
+.hp-content a:hover, .hp-content a:active, .hp-content a:focus {
+  color:white;
+  text-decoration:none;
+}
+.hp-content p, .hp-content li {
+  font:400 12pt 'Open Sans', sans-serif;  
+}
+
+/* ---------------------------------------------------------------------------------------- */
+/* Formatting for tutorial text                                                             */
+/* ---------------------------------------------------------------------------------------- */
+
+/* Tutorial info box */
+article .info {
+  background:#332E2E;
+}
+article .info h1 {
+  font:600 24pt Rajdhani, sans-serif;
+  margin-top:0px;
+}
+article .info h2 {
+  font:600 20pt Rajdhani, sans-serif;
+  margin-top:0px;
+}
+article .info p, article .info li {
+  font:400 15pt Rajdhani, sans-serif;
+}
+article .info .selected {
+  font-weight:800;
+}
+article .info a {
+  color:#d0d0d0;
+}
+article .info a:hover, article .info a:active, article .info a:focus {
+  color:white;
+  text-decoration:none;
+}
+
+/* Tutorial progress box */
+article .info2 {
+  background:#544D4D;
+}
+article .info2 ul {
+  margin:0px;
+  padding:0px;
+}
+article .info2 li {  
+  font:400 15pt Rajdhani, sans-serif;
+  list-style-type:none;
+  margin:0px 0px 0px 10px;
+  padding:0px;
+}
+article .info2 li i {
+  font-size:13pt;
+  margin-right:5px;
+}
+
+/* Ordinary tutorial content */
+article {
+  color:#d0d0d0;
+  padding:0px;
+}
+article h1 {
+  font:600 30pt Rajdhani, sans-serif;
+}
+article h2 {
+  font:600 24pt Rajdhani, sans-serif;
+}
+article p {
+  font:400 12pt 'Open Sans', sans-serif;
+}
+
+
+
+
+article .section {
+  display:none;
+}
+article .section.selected {
+  display:block;
+}
+
+/* ---------------------------------------------------------------------------------------- */
+/* Editor styling                                                                           */
+/* ---------------------------------------------------------------------------------------- */
+
+#editor {
+  width:calc(60vw - 40px);
+  height:calc(100vh - 100px);
+}
+
+.monaco-editor, .monaco-editor-background {
+  background-color:#F0F0F0 !important;
+}
+
+.monaco-editor .keyword {
+  color:#435AC1 !important;
+}
+.monaco-editor .string {
+  color:#993A29 !important;  
+}
+.monaco-editor .number {
+  color:#2D8E39 !important;
+}
+.monaco-editor .comment {
+  color:#706767 !important;
+}
+
+/* Inline output in FSI panel */
+.fsi-wrapper {
+  padding:5px 40px 5px 30px;
+}
+.fsi-output {
+  font:400 12pt 'Open Sans', sans-serif;
+  background:#F4F4F4;
+  border:solid 1px #d8d8d8;
+  padding:10px;
+  border-radius:5px;
+}
+.fsi-output p {
+  padding:0px;
+}
+.fsi-output .it {
+  padding:0px;
+}
+.fsi-output hr {
+  border-top:solid 1px #d8d8d8;
+  margin:10px 0px 10px 0px;
+}
+.fsi-output ul.declarations, .fsi-output ul.messages {
+  list-style-type:none;
+  padding:0px;
+}
+.fsi-output .declarations li, .fsi-output .messages li {
+  margin:0px;
+  padding:0px;
+}
+.fsi-output .declarations li span {
+  margin:0px 4px 0px 0px;
+}
+.fsi-output h3 {
+  font:500 10pt Rajdhani;
+  text-transform:uppercase;
+  margin:0px;
+  color:#AD9F9F;
+}
+.fsi-output p, .fsi-output ul {
+  margin:5px 0px 5px 10px;
+}
+.fsi-output p, .fsi-output li {
+  color:#565050;
+}
+.fsi-output .messages .error .kind {
+  font:600 9pt Rajdhani;
+  color:white;
+  text-transform:uppercase;
+  padding:1px 10px 1px 10px;
+  margin-right:10px;
+  border-radius:4px;
+  background:#CC4F37;
+}
+.fsi-output .messages .warning .kind, .fsi-output .messages .info .kind {
+  font:600 9pt Rajdhani;
+  color:white;
+  text-transform:uppercase;
+  padding:1px 10px 1px 10px;
+  margin-right:10px;
+  border-radius:4px;
+  background:#CCA939;
+}
