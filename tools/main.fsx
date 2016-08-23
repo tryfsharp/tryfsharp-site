@@ -158,8 +158,8 @@ Target "publish" (fun () ->
   for f in Directory.GetFiles(tempOutDir) do File.Delete f
   updateSite { config with Output = tempOutDir } None
 
-  Git.Staging.StageAll tempOutDir
-  Git.Commit.Commit tempOutDir (sprintf "commit -a -m \"Updating site (%s)\"" (DateTime.Now.ToString("f")))
+  runGitCommand tempOutDir "add ." |> ignore
+  runGitCommand tempOutDir (sprintf "commit -a -m \"Updating site (%s)\"" (DateTime.Now.ToString("f"))) |> ignore
   Git.Branches.push tempOutDir
 )
 
