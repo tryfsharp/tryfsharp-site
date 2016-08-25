@@ -35,49 +35,49 @@
 <div id="panel-tutorial">
   <article>
     <div class="info">
-      <h1>Getting started with F#</h1>
+      <h1>Getting started with Try F#</h1>
       <p> Congratulations! You've decided to take your first step towards learning F#, a 
-powerful language that enables you to write simple, concise code to solve complicated
-problems. In this course, you'll learn the basics that you need to feel comfortable
-reading and writing F# programs.</p>
+powerful language that enables you to write simple, concise code to solve complex
+problems. In this course, we'll explore how Try F# works and you'll learn the basics -
+working with variables, printing and we'll even do some <em>HTML</em> formatting.</p>
     </div>
 
     <div class="info info2">
       <ul>
         
           <li id="ref_section_0" class="">
-            <a href="/tutorial/getting-started/0/" onclick="return switchSection(0);">
+            <a href="/tutorial/getting-started/0/" onclick="return switchSection(0, true);">
               
                 <i class="fa fa-circle" aria-hidden="true"></i>
               
-              Running code
+              Hello world in Try F#
             </a>
           </li>
         
           <li id="ref_section_1" class="">
-            <a href="/tutorial/getting-started/1/" onclick="return switchSection(1);">
+            <a href="/tutorial/getting-started/1/" onclick="return switchSection(1, true);">
               
                 <i class="fa fa-circle" aria-hidden="true"></i>
               
-              Adding numbers
+              Simulating a dice
             </a>
           </li>
         
           <li id="ref_section_2" class="">
-            <a href="/tutorial/getting-started/2/" onclick="return switchSection(2);">
+            <a href="/tutorial/getting-started/2/" onclick="return switchSection(2, true);">
               
                 <i class="fa fa-circle" aria-hidden="true"></i>
               
-              Mutation
+              Generating random colors
             </a>
           </li>
         
           <li id="ref_section_3" class="selected">
-            <a href="/tutorial/getting-started/3/" onclick="return switchSection(3);">
+            <a href="/tutorial/getting-started/3/" onclick="return switchSection(3, true);">
               
                 <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
               
-              That's it
+              Adding HTML formatting
             </a>
           </li>
         
@@ -86,31 +86,107 @@ reading and writing F# programs.</p>
     
     <div class="tutorial">
       
-      <div id="section_0" class="section ">
-        <h2>Running code</h2>
-        <p>With Try F#, writing your first line of F# code is much easier than it is with many other languages.
-To get started, try typing the following code into the Script Window and pressing the run button or,
-ctrl+enter. If you don't feel like typing, you can also press the load and run button to execute the code.</p>
+      <section id="section_0" class="section ">
+        <h2>Hello world in Try F#</h2>
+        <p>Running your first F# snippet in Try F# is super easy! To get started, type the following code
+into the editor, select the code and hit <kbd>Alt</kbd>+<kbd>Enter</kbd> to run it.
+You do not even need a mouse - just select the code using <kbd>Shift</kbd> and arrow keys!</p>
+<pre class="fssnip highlighted"><code lang="fsharp"><span onmouseout="hideTip(event, 's01', 1)" onmouseover="showTip(event, 's01', 1)" class="f">printfn</span> <span class="s">&quot;Hello world&quot;</span>
+</code></pre>
+<p>Once you run the code, you should see the output inline. You can leave them around and just hit
+<kbd>Enter</kbd> to move to the next line, but you can hide the outputs at any time using
+<kbd>Alt</kbd>+<kbd>Backspace</kbd>.</p>
+<p>When you are ready, type code that prints "Hello F#" in the editor, run it and we'll automatically
+move to the next section!</p>
+<div class="tip" id="s01">val printfn : format:Printf.TextWriterFormat&lt;&#39;T&gt; -&gt; &#39;T<br /><br />Full name: Microsoft.FSharp.Core.ExtraTopLevelOperators.printfn</div>
 
-      </div>
+
+      </section>
       
-      <div id="section_1" class="section ">
-        <h2>Adding numbers</h2>
-        <p>Now try adding some numbers</p>
+      <section id="section_1" class="section ">
+        <h2>Simulating a dice</h2>
+        <p>Congratulations, you completed Hello World! Now, let's do something more interesting. In F#,
+you can define variables using the <code>let</code> keyword. For example:</p>
+<pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 's11', 1)" onmouseover="showTip(event, 's11', 1)" class="i">sides</span> <span class="o">=</span> <span class="n">6</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 's12', 2)" onmouseover="showTip(event, 's12', 2)" class="i">rnd</span> <span class="o">=</span> <span onmouseout="hideTip(event, 's13', 3)" onmouseover="showTip(event, 's13', 3)" class="i">System</span><span class="o">.</span><span onmouseout="hideTip(event, 's14', 4)" onmouseover="showTip(event, 's14', 4)" class="t">Random</span>()
+</code></pre>
+<p>The first line defines an <code>int</code> variable, but the second one is more interesting. We are creating
+an instance of the <code>Random</code> class from standard libraries, so that we can generate some random
+numbers! Type <code>System.Random</code> in the editor - this will be easy thanks to auto-completion support!</p>
+<p>F# uses type inference, so all variables are typed, but you do not need to write the type explicitly.
+To simulate a dice, type <code>rnd.Next(1, sides + 1)</code>. When you type <code>rnd.</code> the editor gives you auto-completion
+based on the inferred type of the variable.</p>
+<p>The parameters specify that the results should be between <code>1</code> (inclusive) and <code>7</code> (exclusive),
+so we just made a dice. Roll the dice using <kbd>Alt</kbd>+<kbd>Enter</kbd>. When you get 6,
+we'll go to the next step! :-)</p>
+<blockquote>
+<i class="fa fa-lightbulb-o"></i> If you get an error saying "The namespace or module 
+'rnd' is not defined", it is because Try F# does not automatically run your code. Select
+the part that defines `rnd` and run it before running your dice!
+</blockquote>
+<div class="tip" id="s11">val sides : int<br /><br />Full name: gettingstarted.sides</div>
+<div class="tip" id="s12">val rnd : System.Random<br /><br />Full name: gettingstarted.rnd</div>
+<div class="tip" id="s13">namespace System</div>
+<div class="tip" id="s14">Multiple items<br />type Random =<br />&#160;&#160;new : unit -&gt; Random + 1 overload<br />&#160;&#160;member Next : unit -&gt; int + 2 overloads<br />&#160;&#160;member NextBytes : buffer:byte[] -&gt; unit<br />&#160;&#160;member NextDouble : unit -&gt; float<br /><br />Full name: System.Random<br /><br />--------------------<br />System.Random() : unit<br />System.Random(Seed: int) : unit</div>
 
-      </div>
+
+      </section>
       
-      <div id="section_2" class="section ">
-        <h2>Mutation</h2>
-        <p>Type <code>let mutable evil = "foo"</code> and mutate the value using <code>evil &lt;- 42</code>.</p>
+      <section id="section_2" class="section ">
+        <h2>Generating random colors</h2>
+        <p>Congratulations, I hope it did not take too long! (We did not track that.)</p>
+<p>To end the tutorial with something fun, let's generate random colors. You can use
+<code>letters.Substring(10, 1)</code> to get a one-letter substring starting at offset 10
+(which is <code>"A"</code> in our example). Replace <code>10</code> with <code>rnd.Next(0, 16)</code> in this expression
+to get a random hexadecimal value from <code>0</code> to <code>A</code>!</p>
+<p>Now you just need to concatenate <code>"#"</code> and six random letters from our alphabet to get a random
+color. For now, just copy &amp; paste the code 6 times (we'll look at better ways later!) and
+concatenat strings using <code>+</code>. You can use multiple lines, like in the following sample:</p>
+<pre class="fssnip highlighted"><code lang="fsharp"><span class="s">&quot;#&quot;</span> <span class="o">+</span> <span class="s">&quot;This &quot;</span> <span class="o">+</span> 
+<span class="s">&quot;is not a &quot;</span> <span class="o">+</span>
+<span class="s">&quot;valid color!&quot;</span>
+</code></pre>
+<p>Now, write the code to generate a random color! When you produce a valid color, we'll move
+to the next step.</p>
+<blockquote>
+<i class="fa fa-lightbulb-o"></i> Do not forget to include the `#` symbol as the first 
+character of your string and make sure that you have 6 characters between 0 and F after it!
+</blockquote>
 
-      </div>
+
+      </section>
       
-      <div id="section_3" class="section selected">
-        <h2>That's it</h2>
-        <p>Fin d tutorial</p>
+      <section id="section_3" class="section selected">
+        <h2>Adding HTML formatting</h2>
+        <p>Awesome! Now that you can generate random colors, let's finish the tutorial with some inline
+HTML. One more thing before we do that: <em>functions</em>!</p>
+<p>In F#, we define functions just like variables using <code>let</code>. Functions take arguments, and those
+are written right after the name of the function. The following function rolls a 6-sided dice:</p>
+<pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 's31', 1)" onmouseover="showTip(event, 's31', 1)" class="i">rnd</span> <span class="o">=</span> <span onmouseout="hideTip(event, 's32', 2)" onmouseover="showTip(event, 's32', 2)" class="i">System</span><span class="o">.</span><span onmouseout="hideTip(event, 's33', 3)" onmouseover="showTip(event, 's33', 3)" class="t">Random</span>()
+<span class="k">let</span> <span onmouseout="hideTip(event, 's34', 4)" onmouseover="showTip(event, 's34', 4)" class="f">roll</span> () <span class="o">=</span> 
+    <span onmouseout="hideTip(event, 's31', 5)" onmouseover="showTip(event, 's31', 5)" class="i">rnd</span><span class="o">.</span><span onmouseout="hideTip(event, 's35', 6)" onmouseover="showTip(event, 's35', 6)" class="f">Next</span>(<span class="n">1</span>, <span class="n">7</span>)
+</code></pre>
+<p>The parameter <code>()</code> is called the <em>unit value</em> and it specifies that <code>roll</code> is a function, but it
+does not take any useful arguments. You can call it using <code>roll ()</code> and you'll get a random number
+back. In the same way, you can now call <code>randomColor ()</code> to get a random color!</p>
+<blockquote>
+<i class="fa fa-magic"></i> And now, a little secret! If you produce a string starting with 
+"html: " we will render it as an inline HTML, so you can do some funky stuff...
+</blockquote>
+<p>You can append strings and call functions all at the same time, so try for example something like
+this (or, you can add the <code>&lt;marquee&gt;</code> tag for even more fun...):</p>
+<pre class="fssnip highlighted"><code lang="fsharp"><span class="s">&quot;html: &lt;h1 style=&#39;color:&quot;</span> <span class="o">+</span> 
+<span class="i">randomColor</span>() <span class="o">+</span> 
+<span class="s">&quot;&#39;&gt;Hello Try F#&lt;/h1&gt;&quot;</span>
+</code></pre>
+<div class="tip" id="s31">val rnd : System.Random<br /><br />Full name: gettingstarted.rnd</div>
+<div class="tip" id="s32">namespace System</div>
+<div class="tip" id="s33">Multiple items<br />type Random =<br />&#160;&#160;new : unit -&gt; Random + 1 overload<br />&#160;&#160;member Next : unit -&gt; int + 2 overloads<br />&#160;&#160;member NextBytes : buffer:byte[] -&gt; unit<br />&#160;&#160;member NextDouble : unit -&gt; float<br /><br />Full name: System.Random<br /><br />--------------------<br />System.Random() : unit<br />System.Random(Seed: int) : unit</div>
+<div class="tip" id="s34">val roll : unit -&gt; int<br /><br />Full name: gettingstarted.roll</div>
+<div class="tip" id="s35">System.Random.Next() : int<br />System.Random.Next(maxValue: int) : int<br />System.Random.Next(minValue: int, maxValue: int) : int</div>
 
-      </div>
+
+      </section>
       
     </div>
     
@@ -130,19 +206,23 @@ ctrl+enter. If you don't feel like typing, you can also press the load and run b
 <script type="text/javascript">
   loadSections([
     
-      { demo: "// Welcome!\r\n", 
-        solution: "let lucky = 3\r\n", 
-        test: "lucky = 3\r\n" },
+      { title: "Hello world in Try F#",
+        demo: "// Welcome to Try F# and let\u0027s get started writing some F# code!\r\n// (use Alt+Enter to run code and Alt+Backspace to hide outputs)\r\n", 
+        solution: "", 
+        test: "output.Contains(\"F#\")\r\n" },
     
-      { demo: "", 
-        solution: "let unlucky = lucky + 6\r\n", 
-        test: "unlucky = 9\r\n" },
+      { title: "Simulating a dice",
+        demo: "// Now, let\u0027s try simulating a dice!\r\nlet sides = 6\r\nlet rnd = ...\r\n", 
+        solution: "", 
+        test: "unbox it = 6\r\n" },
     
-      { demo: "", 
-        solution: "let mutable evil = 1\r\nevil \u003c- 32\r\n", 
-        test: "( evil \u003c- evil; evil = 42 )\r\n" },
+      { title: "Generating random colors",
+        demo: "// We\u0027ll need hexadecimal letters \u0026 random numbers\r\nlet letters = \"0123456789ABCDEF\"\r\nlet rnd = System.Random()\r\n", 
+        solution: "", 
+        test: "let strclr = unbox\u003cstring\u003e it\r\nlet allHex = \r\n  strclr.ToLower().Substring(1)\r\n  |\u003e Seq.forall (fun c -\u003e (c \u003e= \u00270\u0027 \u0026\u0026 c \u003c= \u00279\u0027) || (c \u003e= \u0027a\u0027 \u0026\u0026 c \u003c= \u0027f\u0027))\r\nstrclr.[0] = \u0027#\u0027 \u0026\u0026 strclr.Length = 7 \u0026\u0026 allHex\r\n" },
     
-      { demo: "", 
+      { title: "Adding HTML formatting",
+        demo: "// We\u0027ve got random color, so let\u0027s do some HTML!\r\nlet letters = \"0123456789ABCDEF\"\r\nlet rnd = System.Random()\r\n\r\nlet randomColor () = \r\n    \"#\" + letters.Substring(rnd.Next(0, 16), 1) +\r\n    letters.Substring(rnd.Next(0, 16), 1) +\r\n    letters.Substring(rnd.Next(0, 16), 1) +\r\n    letters.Substring(rnd.Next(0, 16), 1) +\r\n    letters.Substring(rnd.Next(0, 16), 1) +\r\n    letters.Substring(rnd.Next(0, 16), 1)\r\n", 
         solution: "", 
         test: "" },
     
@@ -163,7 +243,7 @@ ctrl+enter. If you don't feel like typing, you can also press the load and run b
       ed.getEditor().focus();
       window.onresize = function() { ed.getEditor().layout(); };      
       registerEditor(ed);
-      switchSection(3);
+      switchSection(3, false);
     });
   });
 </script>

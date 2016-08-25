@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Droid+Sans+Mono|PT+Sans:400);
+@import url(https://fonts.googleapis.com/css?family=Droid+Sans+Mono|Open+Sans:400);
 
 /*-------------------------------------------------------------------------- 
   Formatting for F# code snippets 
@@ -25,7 +25,7 @@ span.k, span.kwrd { color:#FAB11D; }
 /* comment */
 span.c, span.rem { color:#808080; }
 /* operators */
-span.o, span.op { color:#af75c1; }
+/* span.o, span.op { color:#af75c1; } */
 /* numbers */
 span.n { color:#96C71D; }
 /* line number */
@@ -50,37 +50,38 @@ span.fsi { font-style:italic; color:#888888; }
 
 /* tool tip */
 div.tip {
-	background:#475b5f;
+	background:#262323;
   border-radius:4px;
-  font:400 10pt 'PT Sans', arial, sans-serif;
-	padding:6px 8px 6px 8px;
+  font:400 11pt 'Open Sans', arial, sans-serif;
+	padding:10px 15px 10px 15px;
 	display:none;
   color:#eaeaea;
 }
 
 pre {
-	margin:10px 20px 20px 20px;
-	width:calc(100% - 40px);
-  background-color:#00202D;
+	margin:20px 30px 20px 20px;
+	width:calc(100% - 50px);
+  background-color:#544D4D;
+	border-color:#544D4D;
   border-radius:5px;
   color:#eaeaea;  
 }
 
 code {
-	font:10pt 'Droid Sans Mono', consolas, monospace;
+	font:11pt 'Droid Sans Mono', consolas, monospace;
   padding:1px 3px 1px 3px;
 	background:transparent;
-  color:#c31515;  
+  color:#E4C477;  
 }
 pre, pre code {
-	font:9pt 'Droid Sans Mono', consolas, monospace;
+	font:10pt 'Droid Sans Mono', consolas, monospace;
 	line-height:18px;
 }
 
 table.pre {
   margin:10px 20px 20px 20px;
 	width:calc(100% - 40px);
-  background-color:#00202D;
+  background-color:#544D4D;
   border-radius:5px;
   color:#eaeaea;  
 }
@@ -107,52 +108,3 @@ table.pre pre {
 table.pre td.lines {
 	width:20px;
 }
-
-
-/*
-code {
-  font: 10pt 'Droid Sans Mono',consolas,monospace;
-  border:1px solid #e8e8e8;
-  background-color:#f8f8f8;
-  border-radius:2px;
-  border-radius:3px;
-  padding:1px 3px 1px 3px;
-  color:#c31515;  
-}
-table.pre td {
-  padding:0px;
-}
-table.pre td.lines {
-  width:20px;
-}
-table.pre pre {
-  padding:0px;
-  margin:0px;
-  border-radius:0px;
-} 
-table.pre, pre.fssnip, pre {
-  font: 75% 'Droid Sans Mono',consolas,monospace;
-  width:90%;
-  margin:10px 20px 20px 20px;
-  background-color:#111415;
-  padding:10px;
-  border-radius:5px;
-  color:#eaeaea;  
-}
-table.pre {
-  font-size:100%;
-}
-pre code {
-  font: 100% 'Droid Sans Mono',consolas,monospace;
-  border-style:none;
-  background-color:#111415;
-  padding:0px;
-  color:#eaeaea;
-}
-table.pre td.lines {
-  font: 75% 'Droid Sans Mono',consolas,monospace;
-}
-table.pre td.lines pre.fssnip {
-  font-size:100%;
-}
-*/
