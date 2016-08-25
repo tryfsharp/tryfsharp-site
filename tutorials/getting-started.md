@@ -29,7 +29,7 @@ move to the next section!
 ```
 
 ```test
-output.Contains("F#")
+output.ToLower().Contains("f#")
 ```
 
 Simulating a dice
@@ -41,7 +41,7 @@ you can define variables using the `let` keyword. For example:
     let sides = 6
     let rnd = System.Random()
 
-The first line defines an `int` variable, but the second one is more interesting. We are creating 
+The first line defines an integer variable, but the second one is more interesting. We are creating 
 an instance of the `Random` class from standard libraries, so that we can generate some random 
 numbers! Type `System.Random` in the editor - this will be easy thanks to auto-completion support!
 
@@ -72,8 +72,11 @@ Generating random colors
 
 Congratulations, I hope it did not take too long! (We did not track that.)
 
-To end the tutorial with something fun, let's generate random colors. You can use 
-`letters.Substring(10, 1)` to get a one-letter substring starting at offset 10 
+To end the tutorial with something fun, let's generate random colors. Given the following variable:
+
+    let letters = "0123456789ABCDEF"
+
+You can use `letters.Substring(10, 1)` to get a one-letter substring starting at offset 10 
 (which is `"A"` in our example). Replace `10` with `rnd.Next(0, 16)` in this expression 
 to get a random hexadecimal value from `0` to `A`!
 
@@ -119,8 +122,8 @@ are written right after the name of the function. The following function rolls a
         rnd.Next(1, 7)
 
 The parameter `()` is called the _unit value_ and it specifies that `roll` is a function, but it
-does not take any useful arguments. You can call it using `roll ()` and you'll get a random number
-back. In the same way, you can now call `randomColor ()` to get a random color!
+does not take any useful inputs. You can call it using `roll ()` and you'll get a random number
+back. In the same way, you can now call `randomColor ()`, that we added for you, to get a random color!
 
 > <i class="fa fa-magic"></i> And now, a little secret! If you produce a string starting with 
 > "html: " we will render it as an inline HTML, so you can do some funky stuff...
@@ -132,6 +135,8 @@ this (or, you can add the `<marquee>` tag for even more fun...):
     randomColor() + 
     "'>Hello Try F#</h1>"
         
+And that's all! Feel free to play around, or [go back and choose a more advanced tutorial](/)!        
+
 ```demo
 // We've got random color, so let's do some HTML!
 let letters = "0123456789ABCDEF"
