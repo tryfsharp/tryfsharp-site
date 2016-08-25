@@ -20,7 +20,7 @@
       <ul>
         {% for sec in model.Sections %}
           <li id="ref_section_{{ sec.Index }}" class="{% if sec.Index == model.CurrentSection %}selected{% endif %}">
-            <a href="/tutorial{{ model.Url }}{{ sec.Index }}/" onclick="return switchSection({{ sec.Index }});">
+            <a href="/tutorial{{ model.Url }}{{ sec.Index }}/" onclick="return switchSection({{ sec.Index }}, true);">
               {% if sec.Index == model.CurrentSection %}
                 <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
               {% else %}
@@ -35,10 +35,10 @@
     
     <div class="tutorial">
       {% for sec in model.Sections %}
-      <div id="section_{{ sec.Index }}" class="section {% if sec.Index == model.CurrentSection %}selected{% endif %}">
+      <section id="section_{{ sec.Index }}" class="section {% if sec.Index == model.CurrentSection %}selected{% endif %}">
         <h2>{{ sec.Title }}</h2>
         {{ sec.Content }}
-      </div>
+      </section>
       {% endfor %}
     </div>
     
@@ -58,7 +58,8 @@
 <script type="text/javascript">
   loadSections([
     {% for sec in model.Sections %}
-      { demo: "{{ sec.Demo | javaScriptEncode }}", 
+      { title: "{{ sec.Title | javaScriptEncode }}",
+        demo: "{{ sec.Demo | javaScriptEncode }}", 
         solution: "{{ sec.Solution | javaScriptEncode }}", 
         test: "{{ sec.Test | javaScriptEncode }}" },
     {% endfor %}
@@ -79,7 +80,7 @@
       ed.getEditor().focus();
       window.onresize = function() { ed.getEditor().layout(); };      
       registerEditor(ed);
-      switchSection({{ model.CurrentSection }});
+      switchSection({{ model.CurrentSection }}, false);
     });
   });
 </script>

@@ -168,7 +168,10 @@ define(["exports", "fable-core"], function (exports, _fableCore) {
     _fableCore.Util.setInterfaces(DomNode.prototype, ["FSharpUnion"], "Ionide.Web.Html.DomNode");
 
     var render = $exports.render = function render(node) {
-      return node.Case === "Element" ? function () {
+      return node.Case === "Text" ? function () {
+        var s = node.Fields[0];
+        return document.createTextNode(s);
+      }() : node.Case === "Element" ? function () {
         var tag = node.Fields[0];
         var children = node.Fields[2];
         var attrs = node.Fields[1];
@@ -198,7 +201,9 @@ define(["exports", "fable-core"], function (exports, _fableCore) {
         return el;
       }() : function () {
         var s = node.Fields[0];
-        return document.createTextNode(s);
+        var wrapper = document.createElement('div');
+        wrapper.innerHTML = s;
+        return wrapper;
       }();
     };
 
@@ -212,6 +217,10 @@ define(["exports", "fable-core"], function (exports, _fableCore) {
 
     var text = $exports.text = function text(s) {
       return new DomNode("Text", [s]);
+    };
+
+    var html = $exports.html = function html(s) {
+      return new DomNode("Html", [s]);
     };
 
     var op_EqualsGreater = $exports.op_EqualsGreater = function op_EqualsGreater(k, v) {

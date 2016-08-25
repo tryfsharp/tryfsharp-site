@@ -60,6 +60,12 @@ define(["exports", "./utils", "./services", "./fsi", "monaco", "fable-core"], fu
       var value = _fableCore.String.trim(model.getValue(), "end");
 
       model.setValue(value === "" ? code : value + "\n\n" + code);
+      var rng = {};
+      rng.startLineNumber = model.getLineCount();
+      rng.endLineNumber = model.getLineCount();
+      rng.startColumn = 0;
+      rng.endColumn = 0;
+      ed.setSelection(rng);
     }), _defineProperty(_ref, "setTestCode", function setTestCode(code, callback) {
       fsi.SetTestCode(code, callback);
     }), _ref;

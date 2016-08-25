@@ -1,4 +1,4 @@
-@import 'https://fonts.googleapis.com/css?family=Open+Sans|Rajdhani:400,500,600,700';
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i|Rajdhani:400,500,600,700';
 
 /* ---------------------------------------------------------------------------------------- */
 /* Navigation bar                                                                           */
@@ -53,6 +53,7 @@ nav a:focus, nav a:hover, nav a:active {
   height:calc(100vh - 50px);
   background:#332E2E;
   padding:0px;
+  overflow:auto;
 }
 #panel-tutorial .info {
   padding:30px 60px 20px 60px;
@@ -181,12 +182,32 @@ article h2 {
   font:600 24pt Rajdhani, sans-serif;
 }
 article p {
-  font:400 12pt 'Open Sans', sans-serif;
+  font:400 13pt 'Open Sans', sans-serif;
+  margin:10px 0px 20px 0px;
 }
 
-
-
-
+/* Ordinary tutorial content */
+article section kbd {
+  font:11pt 'Droid Sans Mono', consolas, monospace;
+  background:#544D4D;
+  color:#d0d0d0;
+  border-radius:6px;
+  margin:0px 2px 0px 2px;
+  padding:3px 5px 3px 5px;
+}
+article section blockquote {
+  font:400 13pt 'Open Sans', sans-serif;
+  border-style:none;
+  color:#A59898;
+  margin:10px 0px 20px 0px;
+  padding:0px;
+}
+article section blockquote .fa {
+  font-size:20pt;
+  float:left;
+  margin:15px 20px 15px 0px;
+}
+/* Hiding sections on load */
 article .section {
   display:none;
 }

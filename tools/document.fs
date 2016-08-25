@@ -90,18 +90,22 @@ let private tryFind k (props:IDictionary<string, string>) =
   if props.ContainsKey k then Some(props.[k]) else None
 
 let private parseDocument (cfg:SiteConfig) (file:string) =
-  let document = Markdown.Parse(File.ReadAllText file)
+  let document = Literate.ParseMarkdownFile(file)
   let title, props, secs = readMetadata document.Paragraphs
   
+  let special = set [ "solution"; "test"; "demo" ]
+  let (|SpecialCode|_|) = function 
+    | Matching.LiterateParagraph(LanguageTaggedCode(l, c)) 
+        when special.Contains l -> Some(l, c) 
+    | _ -> None
+    
   let parseSection index (title, sec) = 
-    let special = set [ "solution"; "test"; "demo" ]
-    let (|SpecialCode|_|) = function CodeBlock(code=c; language=l) when special.Contains l -> Some(l, c) | _ -> None
     let codes = sec |> Seq.choose (function SpecialCode(l, c) -> Some(l, c) | _ -> None) |> dict
     let content = sec |> List.choose (function SpecialCode _ -> None | p -> Some p)
     let tryFindCode k = if codes.ContainsKey k then codes.[k] else ""
     { Section.Title = formatPlainSpans title
       Index = index
-      Content = Markdown.WriteHtml(MarkdownDocument(content, document.DefinedLinks))
+      Content = Literate.WriteHtml(document.With(content), prefix=sprintf "s%d" index, lineNumbers=false)
       Demo = tryFindCode "demo"
       Solution = tryFindCode "solution"
       Test = tryFindCode "test" }
