@@ -110,7 +110,7 @@ you can define variables using the <code>let</code> keyword. For example:</p>
 <pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 's11', 1)" onmouseover="showTip(event, 's11', 1)" class="i">sides</span> <span class="o">=</span> <span class="n">6</span>
 <span class="k">let</span> <span onmouseout="hideTip(event, 's12', 2)" onmouseover="showTip(event, 's12', 2)" class="i">rnd</span> <span class="o">=</span> <span onmouseout="hideTip(event, 's13', 3)" onmouseover="showTip(event, 's13', 3)" class="i">System</span><span class="o">.</span><span onmouseout="hideTip(event, 's14', 4)" onmouseover="showTip(event, 's14', 4)" class="t">Random</span>()
 </code></pre>
-<p>The first line defines an <code>int</code> variable, but the second one is more interesting. We are creating
+<p>The first line defines an integer variable, but the second one is more interesting. We are creating
 an instance of the <code>Random</code> class from standard libraries, so that we can generate some random
 numbers! Type <code>System.Random</code> in the editor - this will be easy thanks to auto-completion support!</p>
 <p>F# uses type inference, so all variables are typed, but you do not need to write the type explicitly.
@@ -135,8 +135,10 @@ the part that defines `rnd` and run it before running your dice!
       <section id="section_2" class="section selected">
         <h2>Generating random colors</h2>
         <p>Congratulations, I hope it did not take too long! (We did not track that.)</p>
-<p>To end the tutorial with something fun, let's generate random colors. You can use
-<code>letters.Substring(10, 1)</code> to get a one-letter substring starting at offset 10
+<p>To end the tutorial with something fun, let's generate random colors. Given the following variable:</p>
+<pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 's21', 1)" onmouseover="showTip(event, 's21', 1)" class="i">letters</span> <span class="o">=</span> <span class="s">&quot;0123456789ABCDEF&quot;</span>
+</code></pre>
+<p>You can use <code>letters.Substring(10, 1)</code> to get a one-letter substring starting at offset 10
 (which is <code>"A"</code> in our example). Replace <code>10</code> with <code>rnd.Next(0, 16)</code> in this expression
 to get a random hexadecimal value from <code>0</code> to <code>A</code>!</p>
 <p>Now you just need to concatenate <code>"#"</code> and six random letters from our alphabet to get a random
@@ -152,6 +154,7 @@ to the next step.</p>
 <i class="fa fa-lightbulb-o"></i> Do not forget to include the `#` symbol as the first 
 character of your string and make sure that you have 6 characters between 0 and F after it!
 </blockquote>
+<div class="tip" id="s21">val letters : string<br /><br />Full name: gettingstarted.letters</div>
 
 
       </section>
@@ -167,8 +170,8 @@ are written right after the name of the function. The following function rolls a
     <span onmouseout="hideTip(event, 's31', 5)" onmouseover="showTip(event, 's31', 5)" class="i">rnd</span><span class="o">.</span><span onmouseout="hideTip(event, 's35', 6)" onmouseover="showTip(event, 's35', 6)" class="f">Next</span>(<span class="n">1</span>, <span class="n">7</span>)
 </code></pre>
 <p>The parameter <code>()</code> is called the <em>unit value</em> and it specifies that <code>roll</code> is a function, but it
-does not take any useful arguments. You can call it using <code>roll ()</code> and you'll get a random number
-back. In the same way, you can now call <code>randomColor ()</code> to get a random color!</p>
+does not take any useful inputs. You can call it using <code>roll ()</code> and you'll get a random number
+back. In the same way, you can now call <code>randomColor ()</code>, that we added for you, to get a random color!</p>
 <blockquote>
 <i class="fa fa-magic"></i> And now, a little secret! If you produce a string starting with 
 "html: " we will render it as an inline HTML, so you can do some funky stuff...
@@ -179,6 +182,7 @@ this (or, you can add the <code>&lt;marquee&gt;</code> tag for even more fun...)
 <span class="i">randomColor</span>() <span class="o">+</span> 
 <span class="s">&quot;&#39;&gt;Hello Try F#&lt;/h1&gt;&quot;</span>
 </code></pre>
+<p>And that's all! Feel free to play around, or <a href="/">go back and choose a more advanced tutorial</a>!</p>
 <div class="tip" id="s31">val rnd : System.Random<br /><br />Full name: gettingstarted.rnd</div>
 <div class="tip" id="s32">namespace System</div>
 <div class="tip" id="s33">Multiple items<br />type Random =<br />&#160;&#160;new : unit -&gt; Random + 1 overload<br />&#160;&#160;member Next : unit -&gt; int + 2 overloads<br />&#160;&#160;member NextBytes : buffer:byte[] -&gt; unit<br />&#160;&#160;member NextDouble : unit -&gt; float<br /><br />Full name: System.Random<br /><br />--------------------<br />System.Random() : unit<br />System.Random(Seed: int) : unit</div>
@@ -209,7 +213,7 @@ this (or, you can add the <code>&lt;marquee&gt;</code> tag for even more fun...)
       { title: "Hello world in Try F#",
         demo: "// Welcome to Try F# and let\u0027s get started writing some F# code!\r\n// (use Alt+Enter to run code and Alt+Backspace to hide outputs)\r\n", 
         solution: "", 
-        test: "output.Contains(\"F#\")\r\n" },
+        test: "output.ToLower().Contains(\"f#\")\r\n" },
     
       { title: "Simulating a dice",
         demo: "// Now, let\u0027s try simulating a dice!\r\nlet sides = 6\r\nlet rnd = ...\r\n", 
