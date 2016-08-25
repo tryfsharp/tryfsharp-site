@@ -135,7 +135,8 @@ this (or, you can add the `<marquee>` tag for even more fun...):
     randomColor() + 
     "'>Hello Try F#</h1>"
         
-And that's all! Feel free to play around, or [go back and choose a more advanced tutorial](/)!        
+And that's all! Feel free to play around, or [choose your next tutorial](/). But be careful, we do 
+not save the code you wrote, so if you want to keep it, copy it now!
 
 ```demo
 // We've got random color, so let's do some HTML!
