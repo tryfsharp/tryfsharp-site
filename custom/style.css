@@ -170,18 +170,10 @@ article .info2 li i {
   margin-right:5px;
 }
 
-/* Ordinary tutorial content */
+/* General formatting, also for homepage */
 article {
   color:#d0d0d0;
   padding:0px;
-}
-article a {
-  color:#e8e8e8;
-  text-decoration:underline;
-}
-article a:hover, article a:focus, article a:active {
-  color:white;
-  text-decoration:underline;
 }
 article h1 {
   font:600 30pt Rajdhani, sans-serif;
@@ -195,6 +187,14 @@ article p {
 }
 
 /* Ordinary tutorial content */
+article section a {
+  color:#e8e8e8;
+  text-decoration:underline;
+}
+article section a:hover, article section a:focus,  section a:active {
+  color:white;
+  text-decoration:underline;
+}
 article section kbd {
   font:11pt 'Droid Sans Mono', consolas, monospace;
   background:#544D4D;
